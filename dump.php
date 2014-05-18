@@ -16,7 +16,7 @@ function dump($p1_m_var = NULL, $s_output_dumped = NULL)
 
     if($p1_m_var === $GLOBALS) die('<b>WARNING :: dumping $GLOBALS will lead to infinite loop!</b><br/>');
 
-    if(is_callable($p1_m_var, TRUE, $s_callable_name))
+    if(is_callable($p1_m_var, FALSE, $s_callable_name))
     {
         $s_output_dumped .= '<font color="#ccc">CALLABLE</font> of name ('.$s_callable_name.')';
 
