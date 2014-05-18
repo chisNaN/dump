@@ -16,13 +16,16 @@ function dump($p1_m_var = NULL, $s_output_dumped = NULL)
 
     if($p1_m_var === $GLOBALS) die('<b>WARNING :: dumping $GLOBALS will lead to infinite loop!</b><br/>');
 
-    if(is_null($p1_m_var))
+    if(is_callable($p1_m_var, TRUE, $s_callable_name))
+    {
+        $s_output_dumped .= '<font color="#ccc">CALLABLE</font> of name ('.$s_callable_name.')';
+
+    }elseif(is_null($p1_m_var))
     {
         $s_output_dumped .= '<b>NULL</b>';
 
     }elseif(is_string($p1_m_var))
     {
-
         $s_output_dumped .= '<font color="blue">STRING</font> ('.strlen($p1_m_var).') "'.$p1_m_var.'"';
 
     }elseif(is_bool($p1_m_var))
