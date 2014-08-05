@@ -182,5 +182,5 @@ function dump($p1_m_var = NULL, $s_output_dumped = NULL)
         $s_output_dumped .= ' } </ul>';
     }
 
-    return $s_output_dumped;
+    return '<!doctype html><html lang="en"><head><meta charset="utf-8"></head><body>'.$s_output_dumped.'</body></html>';
 }
