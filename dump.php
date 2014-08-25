@@ -53,18 +53,7 @@ function dump($p1_m_var = NULL, $s_output_dumped = NULL)
 
     }elseif(is_object($p1_m_var))
     {
-        $o_ref_object = new ReflectionClass($p1_m_var);
-
         $i_num_obj++;
-
-        $i_num_const = count($o_ref_object->getConstants());
-        $i_num_prop = count($o_ref_object->getDefaultProperties());
-        $i_num_interfaces = count($o_ref_object->getInterfaces());
-        $i_num_methods = count($o_ref_object->getMethods());
-        $i_num_traits = count($o_ref_object->getTraits());
-
-        if($i_num_const > 0 || $i_num_prop > 0 || $i_num_interfaces > 0 || $i_num_methods > 0 || $i_num_traits > 0)
-        {
 
             $s_output_dumped .= '<span  style="color: #800000; cursor: pointer;"
 		onclick="(document.getElementById(\'obj_'.$i_num_obj.'\').style.display == \'block\') ? document.getElementById(\'obj_'.$i_num_obj.'\').style.display = \'none\' : document.getElementById(\'obj_'.$i_num_obj.'\').style.display = \'block\';" >
@@ -72,88 +61,11 @@ function dump($p1_m_var = NULL, $s_output_dumped = NULL)
 
             $s_output_dumped .= '<ul id="obj_'.$i_num_obj.'" style="display: none; list-style-type: none; margin-top: 0px;">';
 
-            if($i_num_const > 0)
-            {
-
-                $s_output_dumped .=  '<li style="cursor: pointer; margin-left: 25px;"
-                onclick="(document.getElementById(\'obj_'.$i_num_obj.'_const\').style.display == \'block\') ? document.getElementById(\'obj_'.$i_num_obj.'_const\').style.display = \'none\' : document.getElementById(\'obj_'.$i_num_obj.'_const\').style.display = \'block\';" ><b><u>CONSTANTS</u></b> ('.$i_num_const.')</li>';
-
-                $s_output_dumped .= '<ul id="obj_'.$i_num_obj.'_const" style="display: none; list-style-type: none; margin-top: 0px;">';
-
-                foreach($o_ref_object->getConstants() as $s_type_const => $s_val_const):
-
-                    $s_output_dumped .= '<li>&nbsp;["'.$s_type_const.'"] => '.dump($s_val_const).'</li>';
-
-                endforeach;
-
-                $s_output_dumped .= '</ul>';
-            }
-
-            if($i_num_prop > 0)
-            {
-                $s_output_dumped .=  '<li style="cursor: pointer; margin-left: 25px;"
-                onclick="(document.getElementById(\'obj_'.$i_num_obj.'_prop\').style.display == \'block\') ? document.getElementById(\'obj_'.$i_num_obj.'_prop\').style.display = \'none\' : document.getElementById(\'obj_'.$i_num_obj.'_prop\').style.display = \'block\';" ><b><u>PROPERTIES</u></b> ('.$i_num_prop.')</li>';
-
-                $s_output_dumped .= '<ul id="obj_'.$i_num_obj.'_prop" style="display: none; list-style-type: none; margin-top: 0px;">';
-
-                foreach($o_ref_object->getProperties() as $s_type_prop => $o_val_prop):
-
-                    $s_output_dumped .= '<li>&nbsp;["'.$s_type_prop.'"] => '.dump((string)$o_val_prop).'</li>';
-
-                endforeach;
-
-                $s_output_dumped .= '</ul>';
-            }
-
-            if($i_num_interfaces > 0)
-            {
-                $s_output_dumped .=  '<li style="cursor: pointer; margin-left: 25px;"
-                onclick="(document.getElementById(\'obj_'.$i_num_obj.'_interfaces\').style.display == \'block\') ? document.getElementById(\'obj_'.$i_num_obj.'_interfaces\').style.display = \'none\' : document.getElementById(\'obj_'.$i_num_obj.'_interfaces\').style.display = \'block\';" ><b><u>INTERFACES</u></b> ('.$i_num_interfaces.')</li>';
-
-                $s_output_dumped .= '<ul id="obj_'.$i_num_obj.'_interfaces" style="display: none; list-style-type: none; margin-top: 0px;">';
-
-                foreach($o_ref_object->getInterfaces() as $s_type_interface => $o_val_interface):
-
-                    $s_output_dumped .= '<li>&nbsp;["'.$s_type_interface.'"] => '.dump((string)$o_val_interface).'</li>';
-
-                endforeach;
-
-                $s_output_dumped .= '</ul>';
-            }
-
-            if($i_num_methods > 0)
-            {
-                $s_output_dumped .=  '<li style="cursor: pointer; margin-left: 25px;"
-                onclick="(document.getElementById(\'obj_'.$i_num_obj.'_methods\').style.display == \'block\') ? document.getElementById(\'obj_'.$i_num_obj.'_methods\').style.display = \'none\' : document.getElementById(\'obj_'.$i_num_obj.'_methods\').style.display = \'block\';" ><b><u>METHODS</u></b> ('.$i_num_methods.')</li>';
-
-                $s_output_dumped .= '<ul id="obj_'.$i_num_obj.'_methods" style="display: none; list-style-type: none; margin-top: 0px;">';
-
-                foreach($o_ref_object->getMethods() as $s_type_method => $o_val_method):
-
-                    $s_output_dumped .= '<li>&nbsp;["'.$s_type_method.'"] => '.dump((string)$o_val_method).'</li>';
-
-                endforeach;
-
-                $s_output_dumped .= '</ul>';
-            }
-
-            if($i_num_traits > 0)
-            {
-                $s_output_dumped .=  '<li style="cursor: pointer; margin-left: 25px;"
-                onclick="(document.getElementById(\'obj_'.$i_num_obj.'_traits\').style.display == \'block\') ? document.getElementById(\'obj_'.$i_num_obj.'_traits\').style.display = \'none\' : document.getElementById(\'obj_'.$i_num_obj.'_traits\').style.display = \'block\';" ><b><u>TRAITS</u></b> ('.$i_num_traits.')</li>';
-
-                $s_output_dumped .= '<ul id="obj_'.$i_num_obj.'_traits" style="display: none; list-style-type: none; margin-top: 0px;">';
-
-                foreach($o_ref_object->getTraits() as $s_type_trait => $o_val_trait):
-
-                    $s_output_dumped .= '<li>&nbsp;["'.$s_type_trait.'"] => '.dump((string)$o_val_trait).'</li>';
-
-                endforeach;
-            }
+            $s_output_dumped .= preg_replace('#(^Class )|(\s{1}Constants \[\d+\])|(Static properties \[\d+\])|(\s{1}Properties \[\d+\])|(Static methods \[\d+\])|(\s{1}Methods \[\d+\])#',
+                                                '<ul><font color=red>${2}${3}${4}${5}${6}</font></ul>',
+                                                ReflectionClass::export($p1_m_var, TRUE));
 
             $s_output_dumped .= '</ul>';
-
-        }else $s_output_dumped .= '<font color="red"> Attention! OBJECT "'.get_class($p1_m_var).'" appears to be empty</font>';
 
     }elseif(is_array($p1_m_var))
     {
