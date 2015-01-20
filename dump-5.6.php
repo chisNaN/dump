@@ -25,10 +25,9 @@ class Dump
         {
             if(is_callable($p1_m_var, FALSE, $s_callable_name))
             {
-
                 yield '<font color="#ccc">CALLABLE</font> of name ('.$s_callable_name.')';
 
-            }else yield '<font color="blue">STRING</font> ('.strlen($p1_m_var).') "' . $p1_m_var . '"';
+            }else yield '<font color="blue">STRING</font> ('.strlen($p1_m_var).') "'.htmlentities($p1_m_var). '"';
 
         }elseif(is_bool($p1_m_var))
         {
@@ -49,7 +48,6 @@ class Dump
 
         }elseif(is_resource($p1_m_var))
         {
-
             yield '<font color="purple">RESOURCE</font> of type ('.get_resource_type($p1_m_var).')';
 
         }elseif(is_object($p1_m_var))
@@ -94,7 +92,6 @@ class Dump
                     foreach($this->dumped($m_value) as $new_call) yield $new_call;
 
                     yield '</li>';
-
 
                 }else foreach($this->dumped($m_value) as $new_call) yield $new_call;
 
