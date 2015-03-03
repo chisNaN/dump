@@ -16,7 +16,7 @@ class Dump
             {
                 $s_output_dumped .= '<font color="#ccc">CALLABLE</font> of name ('.$s_callable_name.')';
 
-            }else $s_output_dumped .= '<font color="blue">STRING</font> ('.strlen($p1_m_var).') "'.$p1_m_var.'"';
+            }else $s_output_dumped .= '<font color="blue">STRING</font> ('.strlen($p1_m_var).') "'.htmlentities($p1_m_var).'"';
 
         }elseif(is_bool($p1_m_var))
         {
