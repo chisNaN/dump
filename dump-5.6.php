@@ -68,8 +68,8 @@ class Dump
                 {
 
                     yield '<span  style="color: #800000; cursor: pointer;"
-		onclick="(document.getElementById(\'obj_'.$i_num_obj.'\').style.display == \'block\') ? document.getElementById(\'obj_'.$i_num_obj.'\').style.display = \'none\' : document.getElementById(\'obj_'.$i_num_obj.'\').style.display = \'block\';" >
-					            OBJECT :: '.get_class($p1_m_var).'</span>';
+        onclick="(document.getElementById(\'obj_'.$i_num_obj.'\').style.display == \'block\') ? document.getElementById(\'obj_'.$i_num_obj.'\').style.display = \'none\' : document.getElementById(\'obj_'.$i_num_obj.'\').style.display = \'block\';" >
+                                OBJECT :: '.get_class($p1_m_var).'</span>';
 
                     yield '<ul id="obj_'.$i_num_obj.'" style="display: none; list-style-type: none; margin-top: 0px;">';
 
@@ -183,9 +183,9 @@ class Dump
             $i_num_imbricated_array++;
 
             yield '<span  style="color: #FF0000; cursor: pointer;"
-			 					onclick="(document.getElementById(\'level_'.$i_num_imbricated_array.'\').style.display == \'block\') ? document.getElementById(\'level_'.$i_num_imbricated_array.'\').style.display = \'none\' : document.getElementById(\'level_'.$i_num_imbricated_array.'\').style.display = \'block\';">
-								 ARRAY</span> ('.count($p1_m_var).')
-								<ul style="list-style-type: none; display: none; margin-top: 0px;" id="level_'.$i_num_imbricated_array.'"> { ';
+                                onclick="(document.getElementById(\'level_'.$i_num_imbricated_array.'\').style.display == \'block\') ? document.getElementById(\'level_'.$i_num_imbricated_array.'\').style.display = \'none\' : document.getElementById(\'level_'.$i_num_imbricated_array.'\').style.display = \'block\';">
+                                 ARRAY</span> ('.count($p1_m_var).')
+                                <ul style="list-style-type: none; display: none; margin-top: 0px;" id="level_'.$i_num_imbricated_array.'"> { ';
 
             foreach($p1_m_var as $m_key => $m_value):
 
@@ -239,5 +239,7 @@ class Dump
             return '<b>Error: unable to write file, please check path or write permissions</b>';
 
         }else return TRUE;
+
     }
+
 }
