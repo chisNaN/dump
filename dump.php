@@ -41,19 +41,23 @@ class Dump
 
         }elseif(is_object($p1_m_var))
         {
-            $i_num_obj++;
+            if(get_class($p1_m_var) !== 'stdClass')
+            {
+                $i_num_obj++;
 
-            $s_output_dumped .= '<span  style="color: #800000; cursor: pointer;"
-		onclick="(document.getElementById(\'obj_'.$i_num_obj.'\').style.display == \'block\') ? document.getElementById(\'obj_'.$i_num_obj.'\').style.display = \'none\' : document.getElementById(\'obj_'.$i_num_obj.'\').style.display = \'block\';" >
-					            OBJECT :: '.get_class($p1_m_var).'</span>';
+                $s_output_dumped .= '<span  style="color: #800000; cursor: pointer;"
+            onclick="(document.getElementById(\'obj_' . $i_num_obj . '\').style.display == \'block\') ? document.getElementById(\'obj_' . $i_num_obj . '\').style.display = \'none\' : document.getElementById(\'obj_' . $i_num_obj . '\').style.display = \'block\';" >
+                                    OBJECT :: ' . get_class($p1_m_var) . '</span>';
 
-            $s_output_dumped .= '<ul id="obj_'.$i_num_obj.'" style="display: none; list-style-type: none; margin-top: 0px;">';
+                $s_output_dumped .= '<ul id="obj_' . $i_num_obj . '" style="display: none; list-style-type: none; margin-top: 0px;">';
 
-            $s_output_dumped .= preg_replace('#(^Class )|(\s{1}Constants \[\d+\])|(Static properties \[\d+\])|(\s{1}Properties \[\d+\])|(Static methods \[\d+\])|(\s{1}Methods \[\d+\])#',
-                                             '<ul><font color=red>${2}${3}${4}${5}${6}</font></ul>',
-                                             \ReflectionClass::export($p1_m_var, TRUE));
+                $s_output_dumped .= preg_replace('#(^Class )|(\s{1}Constants \[\d+\])|(Static properties \[\d+\])|(\s{1}Properties \[\d+\])|(Static methods \[\d+\])|(\s{1}Methods \[\d+\])#',
+                    '<ul><font color=red>${2}${3}${4}${5}${6}</font></ul>',
+                    \ReflectionClass::export($p1_m_var, TRUE));
 
-            $s_output_dumped .= '</ul>';
+                $s_output_dumped .= '</ul>';
+
+            }else foreach(get_object_vars($p1_m_var) as $m_value) $this->dumped($m_value);
 
         }elseif(is_array($p1_m_var))
         {
