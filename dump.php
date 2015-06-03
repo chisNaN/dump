@@ -4,7 +4,7 @@ class Dump
 {
     protected $htmlDoctype = '<!doctype html><html lang="en"><head><meta charset="utf-8"></head><body>';
 
-    function dumped($p1_m_var = NULL, $s_output_dumped)
+    function dumped($p1_m_var = NULL, $s_output_dumped = '')
     {
         static $i_num_imbricated_array, $i_num_obj, $i_num_imbricated_stdclass_object;
 
