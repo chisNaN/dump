@@ -121,7 +121,7 @@ class Dump
 
         if($p1_var === $GLOBALS) die('<b>WARNING :: dumping $GLOBALS will lead to infinite loop!</b><br/>');
 
-        echo $this->dumped($p1_var);
+        return $this->dumped($p1_var);
     }
 
     public function writeHTML($p1_var, $p2_filename)

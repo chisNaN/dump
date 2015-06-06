@@ -221,7 +221,7 @@ class Dump
 
         foreach($this->dumped($p1_m_var) as $v) $s_html_dump .= $v;
 
-        echo $s_html_dump;
+        return $s_html_dump;
     }
 
     public function writeHTML($p1_m_var, $p2_filename, ...$p3_additionals_params)
