@@ -54,7 +54,7 @@ class Dump
         {
             if(get_class($p1_m_var) !== 'stdClass')
             {
-                $o_ref_object = new ReflectionClass($p1_m_var);
+                $o_ref_object = new \ReflectionClass($p1_m_var);
 
                 $i_num_obj++;
 
