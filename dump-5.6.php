@@ -216,12 +216,9 @@ class Dump
     public function displayHTML($p1_m_var, ...$p2_additionals_params)
     {
         if(count($p2_additionals_params) > 0) die('<b>Error: You try to pass more than one var ! </b><br /> ');
+        
+        foreach($this->dumped($p1_m_var) as $v) echo $v;
 
-        $s_html_dump = '';
-
-        foreach($this->dumped($p1_m_var) as $v) $s_html_dump .= $v;
-
-        return $s_html_dump;
     }
 
     public function writeHTML($p1_m_var, $p2_filename, ...$p3_additionals_params)
