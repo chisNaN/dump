@@ -6,7 +6,9 @@
 :bulb: **Top tip**: usage for php 5.6
 
 ```php
-$a = ['art', true, 10, new ZipArchive, array(opendir('.'), false, 10.44)];
+include_once 'dump-5.6.php'; 
+
+$a = ['art', true, 10, new ZipArchive, array(opendir('.'), false, 10.44), ];
 
 $dump = new Dump;
 
